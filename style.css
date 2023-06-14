@@ -1,0 +1,251 @@
+html {
+  background-color: #d3e7ed;
+  --primary-font-family: "Brush King";
+  --secondary-font-family: "Open Sans", sans-serif;
+  --primary-font-size: 1.5rem;
+  --secondary-font-size: 0.5rem;
+  --tertiary-font-size: 0.315rem;
+  --quaternary-font-size: 1rem;
+  --quinary-font-size: 0.225rem;
+  --accent-font-size: 0.625rem;
+  --header-font-size: 0.75rem;
+  --li-font-weight: 600;
+  --primary-color: #3c3c3c;
+  --secondary-color: white;
+  --tertiary-color: #f5f2df;
+  --quaternary-color: #6f9aab;
+  --quinary-color: black;
+  --accent-color: #fea468;
+}
+
+/* header */
+
+#h3_header,
+#h3_footer {
+  font-family: var(--secondary-font-family);
+  font-size: var(--accent-font-size);
+  color: var(--primary-color);
+}
+
+@media (min-width: 1000px) {
+  #h3_header,
+  #h3_footer {
+    font-size: var(--header-font-size);
+  }
+}
+
+nav ul {
+  list-style: none;
+}
+
+nav ul:last-child {
+  background-color: rgba(254, 164, 104, 0.75);
+  padding: 17px;
+}
+
+nav ul:last-child:hover {
+  cursor: pointer;
+  background-color: rgba(254, 164, 104);
+}
+
+nav li a {
+  text-decoration: none;
+}
+
+nav li a:hover {
+  cursor: pointer;
+  color: black;
+}
+
+li:not(:last-child)::after {
+  color: var(--primary-color);
+}
+
+/* index.html */
+
+#h2-index-1 {
+  font-size: var(--tertiary-font-size);
+  color: var(--secondary-color);
+}
+
+@media (min-width: 1000px) {
+  #h2-index-1 {
+    font-size: var(--quaternary-font-size);
+  }
+}
+
+#p-index {
+  color: var(--tertiary-color);
+}
+
+/* om.html */
+
+h1 {
+  font-family: var(--primary-font-family);
+  font-size: var(--secondary-font-size);
+  color: var(--primary-color);
+}
+
+@media (min-width: 1000px) {
+  h1 {
+    font-size: var(--primary-font-size);
+  }
+}
+
+h2 {
+  font-family: var(--primary-font-family);
+  font-size: var(--tertiary-font-size);
+  color: var(--quinary-color);
+}
+
+@media (min-width: 1000px) {
+  h2 {
+    font-size: var(--quaternary-font-size);
+  }
+}
+
+h3 {
+  font-family: var(--secondary-font-family);
+  font-size: var(--tertiary-font-size);
+  color: var(--tertiary-color);
+}
+
+@media (min-width: 1000px) {
+  h3 {
+    font-size: var(--quaternary-font-size);
+  }
+}
+
+a {
+  font-family: var(--secondary-font-family);
+  font-size: var(--accent-font-size);
+  color: var(--primary-color);
+}
+
+@media (min-width: 1000px) {
+  a {
+    font-size: var(--header-font-size);
+  }
+}
+
+p {
+  font-family: var(--secondary-font-family);
+  font-size: var(--secondary-font-size);
+  color: var(--primary-color);
+}
+
+@media (min-width: 1000px) {
+  p {
+    font-size: var(--quaternary-font-size);
+  }
+}
+
+.kompetence-item h2 {
+  color: var(--secondary-color);
+}
+
+.vision-item h2 {
+  color: var(--secondary-color);
+}
+
+@keyframes glow_kf {
+  from {
+    filter: drop-shadow(0px 0px 25px #fea468);
+  }
+  to {
+    filter: drop-shadow(0px 0px 0px #fea468);
+  }
+}
+
+/* portfolie.html */
+
+.portfolie-tekst {
+  color: var(--secondary-color);
+  font-size: var(--secondary-font-size);
+}
+
+.portfolie-item h2 {
+  color: var(--secondary-color);
+}
+
+.portfolie-item img {
+  opacity: 0.75;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.portfolie-item img:hover {
+  cursor: pointer;
+  opacity: 1;
+}
+
+/* web.html */
+
+.web-item a,
+.ux-item a,
+.animation-item a,
+.indhold-item a {
+  font-family: var(--primary-font-family);
+  color: var(--accent-color);
+  font-size: var(--quinary-font-size);
+  text-decoration: none;
+}
+
+.web-item a,
+.ux-item a,
+.animation-item a,
+.indhold-item a:hover {
+  cursor: pointer;
+  color: black;
+}
+
+@media (min-width: 1000px) {
+  .web-item a,
+  .ux-item a,
+  .animation-item a,
+  .indhold-item a {
+    font-size: var(--secondary-font-size);
+  }
+}
+
+.web-item h2 {
+  color: var(--primary-color);
+  font-size: var(--tertiary-font-size);
+  text-decoration: none;
+}
+
+@media (min-width: 1000px) {
+  .web-item h2 {
+    font-size: var(--quaternary-font-size);
+  }
+}
+
+/* ux.html */
+
+.h3-ux {
+  font-family: var(--secondary-font-family);
+  font-size: var(--accent-font-size);
+  color: var(--primary-color);
+  font-style: italic;
+}
+
+@media (min-width: 1000px) {
+  .h3-ux {
+    font-size: var(--quaternary-font-size);
+  }
+}
+
+.li-ux,
+.li-indhold,
+.h3-ux {
+  font-family: var(--secondary-font-family);
+  font-size: var(--secondary-font-size);
+  color: var(--quinary-color);
+  font-weight: var(--li-font-weight);
+}
+
+@media (min-width: 1000px) {
+  .li-ux,
+  .li-indhold {
+    font-size: var(--quaternary-font-size);
+  }
+}

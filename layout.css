@@ -1,0 +1,490 @@
+/* Får billeder til at udfylde hele deres container, auto bevarer aspect ratio'en */
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+/* index.html */
+
+.index-container {
+  display: grid;
+  grid-template-rows: repeat(2, 1fr auto);
+  grid-template-columns: 1fr 1fr;
+}
+
+#h1-index-2::after {
+  content: "";
+  position: absolute;
+  bottom: 73.5%;
+  left: 23.75%;
+  width: 57%;
+  height: 1px;
+  background-color: var(--primary-color);
+}
+
+@media (min-width: 1000px) {
+  #h1-index-2::after {
+    bottom: 60%;
+    left: 25.5%;
+    width: 53%;
+    height: 1.25px;
+  }
+}
+
+#h1-index-1 {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+#h1-index-2 {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.index-item:nth-child(2) {
+  grid-column: 2;
+}
+
+.index-item:nth-child(3),
+.index-item:nth-child(4) {
+  grid-row: 2;
+}
+
+.index-item:nth-child(2),
+.index-item:nth-child(3) {
+  margin: 5%;
+}
+
+.index-item:nth-child(5) img {
+  width: 100%;
+  height: auto;
+}
+
+.index-item::before {
+  content: "";
+  position: absolute;
+  top: 28.25%;
+  left: 3%;
+  width: 45%;
+  height: 26%;
+  background-color: var(--quaternary-color);
+  z-index: -1;
+}
+
+@media (min-width: 1000px) {
+  .index-item::before {
+    top: 46.5%;
+    left: 1.75%;
+    width: 47%;
+    height: 58%;
+  }
+}
+
+.index-item img:hover {
+  animation-name: glow_kf;
+  animation-duration: 2s;
+  animation-direction: alternate;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+/* om.html */
+
+#billede-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+#billede-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  height: auto;
+}
+
+#billede-item::before {
+  content: "";
+  position: absolute;
+  top: -8.5%;
+  left: -12%;
+  right: -12%;
+  height: 50%;
+  border: 62.5px solid var(--quaternary-color);
+  z-index: -1;
+}
+
+@media (min-width: 1000px) {
+  #billede-item::before {
+    top: -8%;
+    left: -12%;
+    right: -12%;
+    border: 205px solid var(--quaternary-color);
+  }
+}
+
+/* Laver et grid layout med 4 rækker og 3 kolonner, højden sættes til rows, bredden til columns og auto tilpasser størrelsen på første række og kolonner til indholdet */
+
+.grid-container {
+  display: grid;
+  grid-template-rows: auto 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2.5%;
+  margin: 5%;
+}
+
+/* Får child-element 4 til at spanne 3 kolonner (fylde hele række 2 ud) */
+
+.grid-item:nth-child(4) {
+  grid-column: span 3;
+}
+
+/* Får child-element 6 og 8 til at spanne 2 kolonner i rækkerne 3 og 4 (fra kolonne 2-3) */
+
+.grid-item:nth-child(6),
+.grid-item:nth-child(8) {
+  grid-column: 2 / span 2;
+}
+
+/* Centrerer h1-child-elementer horizontalt og vertikalt. Bruger flex for at manipulere elementer mere responsivt, og fleksibelt */
+
+.h1-venstre {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.h1-hoejre {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+@media (min-width: 1000px) {
+  .h1-venstre,
+  .h1-hoejre {
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+/* Laver et grid layout på 1 række, auto tilpasser automatisk højden efter indholdet */
+
+@media (min-width: 600px) {
+  .nav-container {
+    display: grid;
+    grid-template-rows: auto;
+  }
+}
+
+/* Tildeler flex, baseline får linjen til at sidde under teksten, uanset tekststørrelse og højde på linjen */
+
+nav ul {
+  display: flex;
+  padding: 0;
+  align-items: baseline;
+}
+
+/* Første child-element tildeldes række 1 */
+
+nav ul:first-child {
+  grid-row: 1;
+  margin-left: 332.5px;
+  gap: 10px;
+  padding-bottom: 20px;
+}
+
+@media (min-width: 1000px) {
+  nav ul:first-child {
+    margin-left: 91%;
+  }
+}
+
+/* Sidste element tildeles samme række og roteres 90 grader */
+
+nav ul:last-child {
+  grid-row: 1;
+  transform: rotate(90deg);
+  margin-left: 321px;
+}
+
+@media (min-width: 1000px) {
+  nav ul:last-child {
+    margin-left: 90%;
+    margin-top: 2.5%;
+  }
+}
+
+/* li-elementer positiones relativt, så andre elementer ikke påvirkes */
+
+.li-menu,
+.menu {
+  position: relative;
+}
+
+.center-ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Manipulerer alle andre li-elementer end den sidste og laver pseudo-elementer til disse */
+
+.li-menu:not(:last-child)::after {
+  content: ""; /* Tom content property frembringer pseudo-elementet */
+  position: absolute; /* Positionerer elementet absolut relativt til forældre-elementet */
+  bottom: 0; /* Placeres i bunden med bottom: 0 */
+  right: -187.5%;
+  width: 286.25%;
+  height: 5%;
+  background-color: var(--primary-color);
+}
+
+h1,
+h2,
+h3 {
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  align-content: center;
+}
+
+h3 {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+p {
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+.kompetence-item {
+  position: relative;
+  padding: 10px;
+}
+
+.kompetence-item::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--quaternary-color);
+  z-index: -1;
+}
+
+.kompetence-item h3 {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100%;
+}
+
+.vision-item {
+  position: relative;
+  padding: 10px;
+}
+
+.vision-item::before {
+  content: "";
+  position: absolute;
+  top: 6%;
+  left: 0;
+  width: 100%;
+  height: 88.25%;
+  background-color: var(--quaternary-color);
+  z-index: -1;
+}
+
+.vision-item h3 {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100%;
+}
+
+.grid-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.grid-item img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+/* portfolie.html */
+
+.portfolie-container {
+  display: grid;
+  place-items: center;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 5%;
+  padding: 5%;
+  padding-top: 5%;
+}
+
+.portfolie-item {
+  position: relative;
+}
+
+.portfolie-item img {
+  width: 100%;
+  height: auto;
+}
+
+.portfolie-tekst {
+  position: absolute;
+  bottom: 42.5%;
+  left: 25%;
+}
+
+.portfolie-item:hover {
+  animation-name: pulse_glow_kf;
+  animation-duration: 1.25s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+@keyframes pulse_glow_kf {
+  from {
+    scale: 1;
+  }
+  to {
+    scale: 1.025;
+  }
+}
+
+/* web.html */
+
+.web-container {
+  display: grid;
+  grid-template-rows: repeat(2, 1fr auto);
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2%;
+  margin: 5%;
+}
+
+.web-item:nth-child(1),
+.web-item:nth-child(4),
+.web-item:nth-child(7),
+.web-item:nth-child(8),
+.web-item:nth-child(11) {
+  grid-column: 1 / span 2;
+}
+
+.web-item a,
+.ux-item a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.web-item img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+/* .ux.html */
+
+.ux-container {
+  display: grid;
+  grid-template-rows: repeat(2, 1fr auto);
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2%;
+  margin: 5%;
+}
+
+.ux-item:nth-child(1),
+.ux-item:nth-child(4),
+.ux-item:nth-child(5),
+.ux-item:nth-child(6),
+.ux-item:nth-child(7),
+.ux-item:nth-child(8),
+.ux-item:nth-child(9),
+.ux-item:nth-child(14),
+.ux-item:nth-child(15),
+.ux-item:nth-child(16),
+.ux-item:nth-child(17),
+.ux-item:nth-child(18) {
+  grid-column: 1 / span 2;
+}
+
+.li-ux {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.h3-ux {
+  margin-bottom: 5%;
+  font-size: var(--quaternary-font-size);
+}
+
+.ux-item img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+/* animation.html */
+
+.animation-container {
+  display: grid;
+  grid-template-rows: repeat(2, 1fr);
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2%;
+  margin: 5%;
+}
+
+.animation-item:nth-child(1),
+.animation-item:nth-child(4),
+.animation-item:nth-child(5),
+.animation-item:nth-child(8),
+.animation-item:nth-child(11) {
+  grid-column: 1 / span 2;
+}
+
+.animation-item img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+/* indhold.html */
+
+.indhold-container {
+  display: grid;
+  grid-template-rows: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2%;
+  margin: 5%;
+}
+
+.indhold-item:nth-child(1),
+.indhold-item:nth-child(5),
+.indhold-item:nth-child(6),
+.indhold-item:nth-child(7),
+.indhold-item:nth-child(11),
+.indhold-item:nth-child(12),
+.indhold-item:nth-child(13) {
+  grid-column: 1 / span 3;
+}
+
+.indhold-item:nth-child(6) {
+  grid-column: 1 / span 3;
+}
+
+video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
